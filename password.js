@@ -99,6 +99,24 @@ class makePassword {
   static generate(passLength, types) {
     let password = "";
     let charOptions = "";
+
+    if (types.includes("Lowercase Letters")) {
+      charOptions += lowerCase;
+    }
+    if (types.includes("Uppercase Letters")) {
+      charOptions += upperCase;
+    }
+    if (types.includes("Numbers")) {
+      charOptions += numerals;
+    }
+    if (types.includes("Symbols")) {
+      charOptions += specialChars;
+    }
+
+    for (let i = 0; i < passLength; i++) {
+      password += charOptions[Math.floor(Math.random() * charOptions.length)];
+    }
+    return password;
   }
 }
 
