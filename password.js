@@ -96,12 +96,14 @@ const specialChars = [
 ];
 
 class makePassword {
-  static generate(passLength, types) {
+  constructor(passLength, types) {
     let password = "";
+    console.log(types);
     let charOptions = "";
 
     if (types.includes("Lowercase Letters")) {
       charOptions += lowerCase;
+      console.log(charOptions);
     }
     if (types.includes("Uppercase Letters")) {
       charOptions += upperCase;
@@ -114,7 +116,9 @@ class makePassword {
     }
 
     for (let i = 0; i < passLength; i++) {
-      password += charOptions[Math.floor(Math.random() * charOptions.length)];
+      let char = charOptions[Math.floor(Math.random() * charOptions.length)];
+      console.log(char);
+      password += char;
     }
     return password;
   }
@@ -149,6 +153,7 @@ inquirer
     }
   ])
   .then(function(response) {
+    console.log(response.checkboxes);
     let newPass = new makePassword(response.passLength, response.checkboxes);
     console.log(`Your password is ${newPass}`);
   });
