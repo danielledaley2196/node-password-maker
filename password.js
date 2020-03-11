@@ -125,7 +125,7 @@ inquirer
     {
       type: "number",
       message: "Choose a length between 8 and 128.",
-      name: "length",
+      name: "passLength",
       validate: rightLength
     },
     {
@@ -149,7 +149,11 @@ inquirer
     }
   ])
   .then(function(response) {
-    console.log(response);
+    let newPass = JSON.stringify(
+      new makePassword(response.passLength, response.checkboxes)
+    );
+
+    console.log(`Your password is ${newPass}`);
     //display using console.table based on what they chose;
   });
 //diplay using console.table
