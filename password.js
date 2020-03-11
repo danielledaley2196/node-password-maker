@@ -149,9 +149,6 @@ inquirer
     }
   ])
   .then(function(response) {
-    let newPass = JSON.stringify(
-      new makePassword(response.passLength, response.checkboxes)
-    );
-
+    let newPass = new makePassword(response.passLength, response.checkboxes);
     console.log(`Your password is ${newPass}`);
   });
